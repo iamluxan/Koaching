@@ -31,7 +31,6 @@
 # -----------------------------------------------------------------
 
 # ignore everything in the root except the "wp-content" directory.
-/*
 !wp-content/
 !adminraces
 !.gitignore
@@ -128,4 +127,4 @@ wp-content/themes/ada/src/node_modules/
 ehthumbs.db
 Thumbs.db
 /adminraces/crawler/crawler/vendor/
-/assets/
+/docs/
