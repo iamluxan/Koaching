@@ -1,101 +1,86 @@
-<p align="center">
-    <a href="https://github.com/locomotivemtl/locomotive-boilerplate">
-        <img src="https://user-images.githubusercontent.com/4596862/54868065-c2aea200-4d5e-11e9-9ce3-e0013c15f48c.png" height="140">
-    </a>
-</p>
-<h1 align="center">Locomotive Boilerplate</h1>
-<p align="center">Front-end boilerplate for projects by <a href="https://locomotive.ca/">Locomotive</a>.</p>
+# Koaching.fr
 
-## Features
+**Votre coach sportif dans les Landes**  
+Coaching sportif à domicile autour d’Hossegor, Capbreton et les environs.
 
-* Uses a custom [task runner](docs/development.md) for handling assets.
-* Uses [BrowserSync] for fast development and testing in browsers.
-* Uses [Sass] for a feature rich superset of CSS.
-* Uses [ESBuild] for extremely fast processing of JS/ES modules.
-* Uses [SVG Mixer] for processing SVG files and generating spritesheets.
-* Uses [ITCSS] for a sane and scalable CSS architecture.
-* Uses [Locomotive Scroll] for smooth scrolling with parallax effects.
-* Uses a custom [grid system](docs/grid.md) for layout creation.
+---
 
-Learn more about [languages and technologies](docs/technologies.md).
+## À propos
 
-## Getting started
+**Koaching** est le site officiel de Karim Ourabah, coach sportif diplômé et expert en nutrition sportive.  
+L’objectif du site est de présenter les services de coaching, de faciliter la prise de contact avec de nouveaux clients et de partager des témoignages de personnes accompagnées.
 
-Make sure you have the following installed:
+---
 
-* [Node] — at least 20, the latest LTS is recommended.
-* [NPM] — at least 10, the latest LTS is recommended.
+## Services proposés
 
-> 💡 You can use [NVM] to install and use different versions of Node via the command-line.
+Karim propose un accompagnement sur-mesure pour tous les niveaux :
 
-```sh
-# Clone the repository.
-git clone https://github.com/locomotivemtl/locomotive-boilerplate.git my-new-project
+- Remise en forme
+- Renforcement musculaire
+- Perte de poids
+- Prise de masse
+- Bien-être
+- Conseils en nutrition
+- Bilan corporel
 
-# Enter the newly-cloned directory.
-cd my-new-project
-```
+Les séances peuvent se faire :
 
-Then replace the original remote repository with your project's repository.
+- À domicile
+- En extérieur
+- En salle
 
-Then update the following files to suit your project:
+---
 
-* [`README.md`](README.md):
-  The file you are currently reading.
-* [`package.json`](package.json):
-  * Package name: `@locomotivemtl/boilerplate`
-  * Package title: `Locomotive Boilerplate`
-* [`package-lock.json`](package-lock.json):
-  * Package name: `@locomotivemtl/boilerplate`
-* [`loconfig.json`](loconfig.json):
-  * BrowserSync proxy URL: `locomotive-boilerplate.test`
-    Remove `paths.url` to use BrowserSync's built-in server which uses `paths.dest`.
-  * View path: `./views/boilerplate/template`
-* [`environment.js`](assets/scripts/utils/environment.js):
-  * Application name: `Boilerplate`
-* [`site.webmanifest`](www/site.webmanifest):
-  * Manifest name: `Locomotive Boilerplate`
-  * Manifest short name: `Boilerplate`
-* HTML files:
-  * Page title: `Locomotive Boilerplate`
+## Pourquoi choisir Koaching ?
 
-## Installation
+- **Approche personnalisée** : chaque programme est adapté aux objectifs, aux capacités et au rythme de chacun(e).
+- **Diplômes** : coaching sportif et diététique sportive.
+- **Suivi motivant** : soutien constant, suivi des progrès et adaptation des séances.
+- **Clients satisfaits** : de nombreux témoignages positifs.
 
-```sh
-# Switch to recommended Node version from .nvmrc
-nvm use
+---
 
-# Install dependencies from package.json
-npm install
-```
+## Témoignages
 
-## Development
+> *"Grâce à Karim, j’ai retrouvé ma motivation et ma forme physique. Il sait exactement comment vous pousser sans jamais vous décourager. C’est un coach incroyable qui vous fait sentir capable de tout !"*  
+> — Anaïs A.
 
-```sh
-# Start development server, watch for changes, and compile assets
-npm start
+> *"J’avais du mal à me remettre au sport après une longue pause, mais Karim a su me redonner confiance. Ses séances sont variées et dynamiques, et son énergie est contagieuse. Je vois des progrès que je n’aurais jamais cru possibles !"*  
+> — Sophie L.
 
-# Compile and minify assets
-npm run build
-```
+> *"Karim est bien plus qu’un coach, c’est un vrai mentor. Il adapte les entraînements à mes besoins et me soutient à chaque étape. Je n’ai jamais eu autant de résultats en si peu de temps. Je le recommande à 100 % !"*  
+> — Julien B.
 
-Learn more about [development and building](docs/development.md).
+---
 
-## Documentation
+## Technologies utilisées
 
-* [Development and building](docs/development.md)
-* [Languages and technologies](docs/technologies.md)
-* [Grid system](docs/grid.md)
+- **WordPress** pour la gestion de contenu
+- **PHP / AJAX** pour la gestion des formulaires de contact
+- **Google reCAPTCHA** pour la protection anti-spam
+- **Nextad** pour la réalisation du site
 
-[BrowserSync]:       https://npmjs.com/package/browser-sync
-[ESBuild]:           https://npmjs.com/package/esbuild
-[ITCSS]:             https://itcss.io/
-[Locomotive Scroll]: https://npmjs.com/package/locomotive-scroll
-[modularJS]:         https://npmjs.com/package/modujs
-[modularLoad]:       https://npmjs.com/package/modularload
-[Sass]:              https://sass-lang.com/
-[SVG Mixer]:         https://npmjs.com/package/svg-mixer
-[Node]:              https://nodejs.org/
-[NPM]:               https://npmjs.com/
-[NVM]:               https://github.com/nvm-sh/nvm
-# Koaching
+---
+
+## Fonctionnalités principales du site
+
+- Présentation de l'offre de coaching
+- Formulaire de contact sécurisé avec reCAPTCHA
+- Collecte des demandes via e-mail
+- Affichage de témoignages clients
+
+---
+
+## Contact
+
+Site officiel : [https://koaching.fr](https://koaching.fr)
+
+Pour toute demande de coaching, de collaboration ou d'information, vous pouvez utiliser le formulaire de contact directement sur le site.
+
+---
+
+© 2025 Karim Ourabah — Koaching.fr  
+Mentions légales disponibles sur le site.
+
+---
