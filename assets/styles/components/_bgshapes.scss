@@ -1,0 +1,66 @@
+// ==========================================================================
+// Components / Background Shapes
+// ==========================================================================
+.c-bgshape {
+  z-index: -1;
+
+  &,
+  &_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  svg {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    max-width: none;
+    display: block;
+    min-width: 100%;
+
+    path {
+      opacity: 0;
+
+      &:first-child {
+        transform: translate3d(30%, -30%, 10px);
+      }
+
+      &:last-child {
+        transform: translate3d(-30%, 30%, 10px);
+      }
+    }
+  }
+
+  &_inner {
+    opacity: .2;
+    transform: translate3d(0, calc(30% * var(--progress)), 0) scale3d(calc(1 + var(--progress)), calc(1 + var(--progress)), 1);
+    will-change: transform, filter;
+    backface-visibility: hidden;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: #000;
+      opacity: calc(.4 + var(--progress) * .5);
+      z-index: 3;
+    }
+  }
+}
+
+
+html.is-loaded .c-hero .c-bgshape svg path,
+html.is-loaded .c-services.is-inview .c-bgshape svg path {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  transition: opacity speed('slowest') ease('power2.inOut'), transform speed('slowest') ease('power2.inOut');
+  //transition-delay: speed('normal');
+}

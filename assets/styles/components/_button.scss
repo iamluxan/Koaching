@@ -1,0 +1,187 @@
+// ==========================================================================
+// Components / Buttons
+// ==========================================================================
+
+button,
+.c-button {
+
+    // Reset
+    overflow: visible;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    background: none transparent;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    font: inherit;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    // Custom
+    border-radius: var(--button-border-radius);
+    min-width: var(--button-min-width);
+    position: relative;
+    font-size: var(--button-font-size);
+    font-weight: var(--button-font-weight);
+    padding: var(--button-padding);
+    color: var(--button-color);
+    width: var(--button-width);
+    height: var(--button-height);
+    display: inline-flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    transition: color speed(slow) ease('smooth');
+    line-height: 1;
+
+    &_bg {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        transition: transform .6s ease('bounce');
+        transform: translateZ(0);
+        overflow: hidden;
+        border-radius: 4rem;
+        z-index: 1;
+
+        &:before,
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: var(--button-background);
+            background-size: 600%;
+            animation: bgAnim 16s linear infinite;
+            transition: background-color .45s ease('power2.inOut');
+            border-radius: 4rem;
+        }
+
+        &:after {
+            background-color: var(--button-background-hover);
+            background-size: unset;
+            transform: translateY(200%) rotate(10deg);
+            transform-origin: center bottom;
+            transition: transform .6s ease('smooth'), background-color .45s ease('smooth');
+            left: -5%;
+            right: -5%;
+        }
+    }
+
+    &_label {
+        position: relative;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        z-index: 2;
+        display: block;
+        transition: transform .6s ease('sine.inOut');
+    }
+
+    &_icon {
+        z-index: 2;
+        position: relative;
+    }
+
+
+    @include u-hocus {
+        color: var(--button-color-hover);
+
+        .c-button_label,
+        .c-button_bg {
+
+            &,
+            &:after {
+                -webkit-transform: scale(1.1);
+                -ms-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    @include u-actus {
+    }
+
+}
+
+
+// Button with stroke only
+.c-button.-stroke {
+    --button-background-hover: var(--text-color);
+    --button-background: transparent;
+    --button-color: var(--text-color);
+    --button-color-hover: #fff;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--button-color);
+
+
+    &.-stroke-fff {
+        --button-border-color: #fff;
+        --button-background-hover: #fff;
+        --button-color: #fff;
+        --button-color-hover: var(--text-color);
+    }
+}
+
+// Btn CTA
+.c-button.-cta {
+    --button-background-hover: #{colorCode(lightgrey)};
+    --button-background: #{colorCode(primary)};
+    --button-color: #{colorCode(lightest)};
+    --button-color-hover: #{colorCode(darkest)};
+
+    //border-width: 0px;
+    //border-style: solid;
+    //border-color: transparent;
+}
+
+// Button circle, usefull for icons
+.c-button.-circle {
+    --button-width: #{rem(45px)};
+    --button-height: #{rem(45px)};
+    --button-padding: 0;
+    --button-min-width: auto;
+    --button-background: #{colorCode(lightgrey)};
+    --button-color: #{colorCode(darkest)};
+
+    color: var(--button-color);
+    background: var(--button-background);
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+
+    &_icon {
+
+    }
+}
+
+.c-button:disabled, .c-button[aria-disabled="true"] {
+    opacity: .35;
+    pointer-events: none;
+}
+
+@keyframes bgAnim {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}

@@ -1,0 +1,92 @@
+.u-anim-scroll {
+  opacity: 0;
+  transform: translate3d(0, size-clamp('md'), 0);
+  transition-duration: speed(slow);
+
+  &.-reverse {
+    transform: translate3d(0, calc(clamp(calc(0.0625rem * var(--spacing-sm-mobile)), var(--spacing-sm-mobile) / 14.4 * 1vw, calc(0.0625rem * var(--spacing-sm-mobile))) * -1), 0)
+  }
+
+  &.-left {
+    transform: translate3d(calc(clamp(calc(0.0625rem * var(--spacing-sm-mobile)), var(--spacing-sm-mobile) / 14.4 * 1vw, calc(0.0625rem * var(--spacing-sm-mobile))) * -1), 0, 0);
+  }
+
+  &.-right {
+    transform: translate3d(calc(clamp(calc(0.0625rem * var(--spacing-sm-mobile)), var(--spacing-sm-mobile) / 14.4 * 1vw, calc(0.0625rem * var(--spacing-sm-mobile))) * 1), 0, 0);
+  }
+
+  @for $i from 1 through 20 {
+    &.-delay-#{$i} {
+      opacity: 0;
+      transform: translate3d(0, size-clamp('sm'), 0);
+    }
+
+    &.-delay-#{$i}.-left {
+      opacity: 0;
+      transform: translate3d(calc(clamp(calc(0.0625rem * var(--spacing-sm-mobile)), var(--spacing-sm-mobile) / 14.4 * 1vw, calc(0.0625rem * var(--spacing-sm-mobile))) * -1), 0, 0);
+    }
+  }
+}
+
+html.is-ready {
+  .u-anim-scroll-parent.is-inview .u-anim-scroll {
+    &.-parent {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth');
+    }
+
+    @for $i from 0 through 20 {
+      &.-delay-#{$i}.-parent {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.6s ease('smooth'), transform 0.6s ease('smooth');
+        transition-delay: calc(#{$i}/10 *1s);
+      }
+    }
+  }
+
+  //.u-anim-scroll:not(.-parent).is-inview {
+  //  opacity: 1;
+  //  transform: none;
+  //  transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth');
+  //  transition-delay: 0s
+  //}
+
+  @for $i from 0 through 20 {
+    .u-anim-scroll.-delay-#{$i}:not(.-parent).is-inview {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth');
+      transition-delay: calc(#{$i}/10 *1s);
+    }
+  }
+}
+
+
+
+html.is-loading {
+  .u-anim-scroll.-parent {
+    transition-duration: calc(0.6s/2);
+    transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth')
+  }
+
+  @for $i from 0 through 20 {
+    .u-anim-scroll.-delay-#{$i}.-parent {
+      transition-duration: calc(0.6s/2);
+      transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth')
+    }
+  }
+
+  .u-anim-scroll:not(.-parent) {
+    transition-duration: calc(0.6s/2);
+    transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth')
+  }
+
+  @for $i from 0 through 20 {
+    .u-anim-scroll.-delay-#{$i}:not(.-parent) {
+      transition-duration: calc(0.6s/2);
+      transition: opacity 0.6s ease('smooth'),transform 0.6s ease('smooth')
+    }
+  }
+}

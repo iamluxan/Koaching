@@ -229,8 +229,7 @@ async function purgeUnusedCSS(outfile, label) {
         keyframes: true,
         safelist: {
             // Keep all except .u-gc-* | .u-margin-* | .u-padding-*
-            // standard: [ /^(?!.*\b(u-gc-|u-margin|u-padding)).*$/ ]
-            standard: [ /^(?!.*\b(u-gc-|u-padding)).*$/ ]
+            standard: [ /^(?!.*\b(u-gc-|u-margin|u-padding)).*$/ ]
         },
         variables: true,
     })

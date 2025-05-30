@@ -1,0 +1,107 @@
+// ==========================================================================
+// Components / Image
+// ==========================================================================
+
+.c-image {
+  &_img {
+    width: 100%;
+    transition: opacity .9s cubic-bezier(0.165, 0.84, 0.44, 1), transform .9s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &_inner {
+    position: relative;
+    filter: blur(10px);
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    //transform: scale3d(1.2, 1.2, 1.2);
+  }
+
+  &.-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    .c-image_parallax {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .c-image_img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .c-image_inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      transform: scale3d(1.2, 1.2, 1.2);
+    }
+  }
+
+
+  &.-parallax,
+  &.c-lazy {
+    overflow: hidden;
+  }
+
+  &.-parallax {
+    .c-image_inner {
+      transform: scale3d(1.03, 1.03, 1);
+    }
+  }
+
+  &.-overlay {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+
+    img.c-image_img {
+      opacity: .5;
+    }
+  }
+
+  // Styles with border radius
+  &.-border-radius {
+    .c-image_inner {
+      overflow: hidden;
+      border-radius: var(--border-radius-large);
+    }
+  }
+
+  &.c-lazy .c-image_img {
+    opacity: 0;
+    transform: scale3d(1.05, 1.05, 1);
+  }
+
+  &.-lazy-loaded .c-image_img {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+html {
+  &.is-first-loaded .c-image_inner {
+    transition: transform .9s cubic-bezier(0.215, 0.61, 0.355, 1), filter .9s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .9s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  &.is-ready .c-image {
+    //-webkit-clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+    //clip-path: polygon(100% 0, 0 0, 0 100%, 100% 100%);
+  }
+
+  &.is-ready .c-image_inner {
+    transform: scale3d(1, 1, 1);
+    filter: blur(0px);
+    transition: transform .9s cubic-bezier(0.215, 0.61, 0.355, 1), filter .9s cubic-bezier(0.215, 0.61, 0.355, 1), opacity .9s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+}

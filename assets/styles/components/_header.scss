@@ -1,0 +1,172 @@
+// ==========================================================================
+// Components / Header Site
+// ==========================================================================
+
+.c-header {
+  position: fixed;
+  padding: var(--header-padding) var(--grid-margin) var(--header-padding) var(--grid-margin);
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: z(header);
+  pointer-events: none;
+  align-items: center;
+
+  &:before {
+    position: absolute;
+    background: colorCode(darkest);
+    content: '';
+    display: block;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: -1;
+    border-bottom-left-radius: var(--border-radius-large);
+    border-bottom-right-radius: var(--border-radius-large);
+
+    clip-path: inset(0% 0% 100% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+  }
+
+  &_logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &_logo {
+    display: inline-flex;
+    align-items: center;
+    gap: spacing('gutter');
+    pointer-events: all;
+    background: transparent;
+  }
+
+  &_button {
+    pointer-events: all;
+    transition: transform 0.3s cubic-bezier(0.38, 0.005, 0.215, 1), opacity 0.3s cubic-bezier(0.38, 0.005, 0.215, 1);
+  }
+
+  &_logo-shape {
+    color: #fff;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      padding-bottom: 100%;
+      border-radius: 50%;
+      background-color: colorCode(darkest);
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      z-index: -1;
+    }
+  }
+
+  &_logo-label {
+    font-family: ff('Kodchasan');
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    color: #fff;
+    display: block;
+    font-size: var(--font-size-body-medium);
+    animation: slideInLeft speed('normal') ease('smooth');
+
+    span {
+      display: block;
+    }
+  }
+}
+
+html.is-first-loaded {
+  .c-header {
+
+    &:before {
+      transition: clip-path .6s cubic-bezier(.38,.005,.215,1);
+    }
+
+    &_logo-shape {
+      transition: transform speed('slow') ease('smooth'), opacity speed('slow') ease('smooth'), color speed('normal') ease('smooth');
+
+      &:before {
+        transition: transform speed('slow') cubic-bezier(0.215, 0.61, 0.355, 1),
+        opacity speed('faster') cubic-bezier(0.215, 0.61, 0.355, 1),
+        background-color speed('faster') cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    &_logo-label {
+      transition: color speed('normal') ease('smooth');
+    }
+  }
+
+  &:not(.has-menu-open) {
+
+    &.has-scrolled {
+      &.scrolling-down {
+        .c-header {
+          &_button {
+            opacity: 0;
+            transform: translate3d(20px, 0, 0);
+          }
+        }
+      }
+
+      .c-header {
+        &:before {
+          clip-path: inset(0% 0% 100% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+        }
+
+        &_logo-label {
+          display: none;
+        }
+
+        &_logo-shape {
+          color: #fff !important;
+          transform: scale(0.8) translateX(10px);
+
+          &:before {
+            opacity: 1;
+            transform:
+                    translate(-50%, -50%) scale(2);
+            transition:
+                    transform .3s cubic-bezier(0.215, 0.61, 0.355, 1),
+                    opacity .3s cubic-bezier(0.215, 0.61, 0.355, 1),
+                    background-color .15s cubic-bezier(0.215, 0.61, 0.355, 1);
+          }
+        }
+      }
+    }
+  }
+}
+
+html[data-page="formules"],
+html[data-page="mentions-legales"],
+html.has-menu-open {
+  .c-header {
+    &:before {
+      -webkit-clip-path: inset(0% 0% 0% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+      clip-path: inset(0% 0% 0% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(-10px, 0, 0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}

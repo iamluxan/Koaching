@@ -1,0 +1,38 @@
+// ==========================================================================
+// Components / Services
+// ==========================================================================
+
+.c-services {
+  padding: size-clamp('xl') 0;
+  border-radius: var(--border-radius-large);
+  position: relative;
+  background: colorCode(darkest);
+  color: #fff;
+  overflow: hidden;
+  z-index: 14;
+
+  &_activities {
+    position: relative;
+    height: 100%;
+
+
+    @media (max-width: $to-md) {
+      .c-accordion_item {
+        border-color: colorCode('lightest');
+      }
+
+      .c-accordion_toggler {
+        --button-color: #{colorCode(lightest)};
+      }
+    }
+
+    @media (min-width: $from-md) {
+      border-top-left-radius: var(--border-radius-base);
+      border-bottom-left-radius: var(--border-radius-base);
+      transform: translateX(var(--grid-margin));
+      background: #fff;
+      color: colorCode(darkest);
+      padding: spacing('md');
+    }
+  }
+}

@@ -1,0 +1,288 @@
+// ==========================================================================
+// Components / Main Menu
+// ==========================================================================
+.c-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: z(menu);
+  clip-path: inset(0% 0% 0% 0% round 0 0 0 0);
+  pointer-events: none;
+
+  &_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+    z-index: 2;
+  }
+
+  &_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: colorCode(darkest);
+  }
+
+  &_inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1;
+
+    @media (min-width: $from-md) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &_nav {
+    padding-top: var(--header-height);
+    padding-left: var(--grid-margin);
+    padding-right: var(--grid-margin);
+    padding-bottom: spacing('md');
+    position: relative;
+    z-index: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    background: colorCode(lightest);
+    color: colorCode(darkest);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: $from-md) {
+      clip-path: inset(0% 100% 0% 0% round 0px var(--border-radius-large) var(--border-radius-large) 0px);
+    }
+
+    @media (max-width: $to-md) {
+      clip-path: inset(0% 0% 100% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+      flex-grow: 1;
+    }
+
+    &_group.-main {
+      padding-top: spacing('lg');
+      flex-grow: 1;
+
+      .c-menu_list {
+        line-height: 1;
+
+        li {
+          padding: spacing('xs') 0;
+
+          a {
+            font-size: var(--font-size-body-huge);
+            letter-spacing:-.02em;
+            font-weight: $font-weight-bold;
+            text-decoration: none;
+            color: colorCode(darkest);
+            font-family: ff('Kodchasan');
+            transition: color speed(fast) ease(smooth);
+
+            &:hover {
+              color: colorCode(primary);
+            }
+          }
+
+        }
+      }
+    }
+
+    &_group.-secondary {
+      padding-top: spacing('lg');
+
+      .c-menu_nav_group_grid {
+        @media (min-width: 1000px) {
+          align-items: end;
+        }
+      }
+
+      .c-menu_list {
+        li {
+          font-weight: $font-weight-bold;
+          font-size: var(--font-size-body-medium);
+          letter-spacing:-.02em;
+
+          a {
+            color: colorCode(darkest);
+
+            &:hover {
+              color: colorCode(primary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // = BACKGROUND
+  &_sticky {
+
+    @media (min-width: $from-md) {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-left: calc(var(--border-radius-large)* -1);
+      overflow: hidden;
+      padding-left: var(--border-radius-large);
+    }
+  }
+
+  &_background {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    clip-path: inset(0% 0% 0% 100% round var(--border-radius-large) 0 0 var(--border-radius-large));
+    overflow: hidden;
+
+    @media (max-width: $to-md) {
+      display: none;
+    }
+
+    &_inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: transform speed('slow') ease('smooth');
+
+      @media (max-width: $to-md) {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        content: "";
+        background-color: colorCode(darkest);
+        opacity: .8;
+        z-index: 2;
+      }
+    }
+
+    &_image {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+html.is-first-loaded {
+  .c-menu {
+    &_container {
+      transition: visibility 0s cubic-bezier(.38,.005,.215,1) .6s;
+    }
+
+    &_nav {
+      transition: clip-path .6s cubic-bezier(.38,.005,.215,1);
+    }
+
+    &_background {
+      transition: clip-path .6s cubic-bezier(.38,.005,.215,1);
+
+      &_inner {
+        transition: transform .6s cubic-bezier(.38,.005,.215,1);
+
+        &:before {
+          transition: opacity 1.2s cubic-bezier(.38,.005,.215,1);
+        }
+      }
+    }
+  }
+}
+
+html.is-ready {
+  .c-menu {
+    &_container {
+      transition: visibility 0s cubic-bezier(.38,.005,.215,1) .6s;
+    }
+
+    &_overlay {
+      transition: opacity .6s cubic-bezier(.38,.005,.215,1), visibility 0s cubic-bezier(.38,.005,.215,1) .6s;
+    }
+  }
+}
+
+html.has-menu-open {
+  overflow: hidden;
+
+  .c-header {
+    &:before {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &_logo {
+      color: colorCode(lightest);
+    }
+  }
+
+  .c-menu {
+    pointer-events: all;
+
+    &_container {
+      pointer-events: all;
+      visibility: visible;
+      transition: visibility 0s 0s;
+    }
+  }
+
+  &.is-first-loaded {
+
+    .c-menu {
+      &_nav {
+        clip-path: inset(0% 0% 0% 0% round 0px var(--border-radius-large) var(--border-radius-large) 0px);
+
+        @media (max-width: $to-md) {
+            -webkit-clip-path: inset(0% 0% 0% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+            clip-path: inset(0% 0% 0% 0% round 0px 0px var(--border-radius-large) var(--border-radius-large));
+        }
+      }
+
+      &_background {
+        clip-path: inset(0% 0% 0% 0% round 0 0 0 0);
+
+        &_inner {
+          transition: transform 1.2s cubic-bezier(.38, .005, .215, 1);
+          transform: scaleZ(1) translate(0);
+
+          &:before {
+            opacity: .2;
+          }
+        }
+      }
+
+      &_overlay {
+        opacity: .8;
+        pointer-events: all;
+        visibility: visible;
+        cursor: pointer;
+        transition: opacity .3s cubic-bezier(.38,.005,.215,1), visibility 0s linear;
+      }
+    }
+  }
+}

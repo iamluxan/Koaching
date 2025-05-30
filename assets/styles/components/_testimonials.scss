@@ -1,0 +1,57 @@
+// ==========================================================================
+// Components / Testimonials
+// ==========================================================================
+
+.c-testimonials {
+  margin: spacing('lg') 0;
+
+  &_title {
+    text-align: center;
+  }
+
+  &_nav {
+    text-align: right;
+    margin-bottom: spacing('sm');
+  }
+
+  &_slider {
+
+  }
+
+  .swiper-slide {
+    height: auto;
+  }
+
+  &_tile {
+    background: colorCode(lightgrey);
+    padding: spacing('md');
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &_desc {
+    margin-bottom: spacing('xs');
+  }
+
+  &_author {
+    color: colorCode(darkest, 0.4);
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
+    //margin-top: auto;
+
+    &:before {
+      height: 1px;
+      margin-right: spacing('2xs');
+      background: colorCode(darkest, 0.4);
+      width: rem(20px);
+      content: '';
+      display: inline-flex;
+    }
+  }
+
+}

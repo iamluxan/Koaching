@@ -115,7 +115,6 @@ wp-content/themes/ada/src/node_modules/
 /bower_components/
 
 # Loco
-/assets/
 /node_modules/
 
 # OS generated files
@@ -128,3 +127,5 @@ ehthumbs.db
 Thumbs.db
 /adminraces/crawler/crawler/vendor/
 /docs/
+/assets/Créa/
+/assets/Images/

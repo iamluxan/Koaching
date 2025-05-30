@@ -1,0 +1,117 @@
+// ==========================================================================
+// Components / Accordion
+// ==========================================================================
+
+.c-accordion {
+
+  &_list {
+
+  }
+
+  &_item {
+    border: 2px solid currentColor;
+    border-radius: var(--accordion-toggler-border-radius);
+    margin-bottom: -2px;
+
+    &_content {
+      height: 0;
+      overflow: hidden;
+      transition: height speed('slow');
+
+      img {
+        width: auto;
+        max-height: 300px;
+        margin: 0 auto;
+        margin-bottom: spacing('sm');
+      }
+
+      &_inner {
+        padding: 0 calc(var(--grid-gutter) * 2) spacing('sm') calc(var(--grid-gutter) * 2);
+        opacity: 0;
+        transition: opacity speed('slow') ease('smooth');
+      }
+    }
+
+    // Opened accordion settings
+    &.is-open {
+      .c-accordion_item_content_inner {
+        opacity: 1;
+      }
+
+      .c-accordion_toggler_icon {
+        &,
+        &_svg_path.-horizontal {
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+
+  // Button with icon
+  &_toggler {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--accordion-toggler-height);
+    width: 100%;
+
+    border-radius: var(--accordion-toggler-border-radius);
+    --button-color-hover: #{colorCode(primary)};
+    --button-color: #{colorCode(darkest)};
+    border: 0;
+    padding-left: calc(var(--grid-gutter) * 2);
+    padding-right: calc(var(--grid-gutter) * 2);
+
+    @media (hover: hover) {
+      &:hover {
+        .c-accordion_toggler_icon {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    &_label {
+      display: inline-block;
+      line-height: 1;
+      font-weight: $font-weight-bold;
+      text-align: left;
+      padding-right: 1.875rem;
+      text-wrap: balance;
+      font-size: var(--font-size-body-medium);
+    }
+
+    &_icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      width: .875rem;
+      height: .875rem;
+      flex-shrink: 0;
+      transition: transform speed('normal') ease('smooth');
+
+      &_svg {
+        width: 100%;
+        height: 100%;
+        stroke: colorCode(primary);
+
+        &_path {
+          transform-origin: 50% 50%;
+        }
+      }
+    }
+  }
+}
+
+
+
+html.is-first-loaded {
+  .c-accordion_toggler_icon {
+    transition: transform speed('slow') ease('smooth');
+
+    &_svg_path.-horizontal {
+      transition: transform speed('normal') ease('smooth');
+    }
+  }
+}

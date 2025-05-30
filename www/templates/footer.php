@@ -70,7 +70,7 @@
                         <label class="c-form_label || u-screen-reader-text" for="name">
                             Votre nom & prénom <span aria-hidden="true">*</span>
                         </label>
-                        <input placeholder="Nnom & prénom" class="c-form_input" type="text" value="" id="name" name="name" required>
+                        <input placeholder="Nom & prénom" class="c-form_input" type="text" value="" id="name" name="name" required>
                     </div>
                     <div class="c-form_label">
                         <label class="c-form_label || u-screen-reader-text" for="phone" >

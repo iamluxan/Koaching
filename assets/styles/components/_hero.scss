@@ -1,0 +1,110 @@
+// ==========================================================================
+// Components / Hero
+// ==========================================================================
+
+.c-hero {
+  position: relative;
+  color: #fff;
+  background: #000000;
+  overflow: hidden;
+  -webkit-clip-path: inset(0% 0% 0% 0% round 0px 0px calc(var(--progress)* var(--border-radius-large)) calc(var(--progress)* var(--border-radius-large)));
+  clip-path: inset(0% 0% 0% 0% round 0px 0px calc(var(--progress)* var(--border-radius-large)) calc(var(--progress)* var(--border-radius-large)));
+  z-index: 10;
+
+  &_inner {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: stretch;
+    min-height: calc(calc(100* var(--vh, 1vh)) - (var(--grid-margin)* 2));
+  }
+
+  &_title div {
+    font-weight: $font-weight-light;
+    font-style: italic;
+  }
+}
+
+.c-hero_container {
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  position: relative;
+  z-index: 4;
+
+  //padding-top: var(--header-height);
+  //height: calc(100vh - var(--header-height));
+
+
+  h1 {
+    margin: size-clamp('sm') 0;
+    font-weight: normal;
+
+    @media (min-width: $from-md) {
+      max-width: vw(55);
+    }
+  }
+}
+
+.c-hero_visual {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+  z-index: -2;
+  display: flex;
+  top: var(--header-height);
+  justify-content: flex-end;
+
+  img {
+    object-fit: contain;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 5%, rgba(0,0,0,0) 75%);
+  }
+
+  //
+  //@media (min-width: $from-md) {
+  //  width: 45%;
+  //  align-items: flex-end;
+  //  justify-content: flex-end;
+  //}
+  //
+  //@media (max-width: $to-md) {
+  //  align-items: flex-end;
+  //  justify-content: center;
+  //}
+  //
+  //img {
+  //  @media (max-width: $to-md) {
+  //    max-height: dvh(60);
+  //  }
+  //}
+}
+
+.c-hero_content {
+  width: 100%;
+  padding-top: var(--header-height);
+  padding-bottom: size-clamp('xl');
+  //max-width: 55%;
+  max-width: rem(800px);
+
+  @media (min-width: $from-sm) {
+    width: vw(60);
+  }
+
+}

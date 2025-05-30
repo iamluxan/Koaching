@@ -1,0 +1,43 @@
+.c-spinner {
+  pointer-events: none;
+
+  &.-circle {
+    position: fixed;
+    bottom: calc(var(--grid-gutter) *2);
+    right: calc(var(--grid-gutter) *2);
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    z-index: 3000;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid colorCode(primary);
+      border-bottom-color: rgba(0, 0, 0, 0);
+      animation: rotate .8s linear infinite;
+      content: "";
+      border-radius: 50%;
+    }
+  }
+}
+
+html.is-loaded .c-spinner.-circle {
+  transform: scale3d(0, 0, 1);
+}
+
+html.is-first-loaded .c-spinner.-circle {
+  transition: transform .3s ease('smooth');
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

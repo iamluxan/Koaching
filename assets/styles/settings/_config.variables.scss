@@ -1,0 +1,40 @@
+// ==========================================================================
+// Settings / Config / CSS VARS
+// ==========================================================================
+
+:root {
+
+    // Borders
+    --border-radius-base: #{rem(30px)};
+    --border-radius-large: #{rem(45px)};
+
+    // Grid
+    --grid-columns:     4;
+    --grid-gutter:      #{rem(20px)};
+    --grid-margin:      #{rem(30px)};
+
+    // Header
+    --header-height_inner: 3.75rem;
+
+    --header-padding: 20px;
+
+    --header-height: calc(var(--header-height_inner) + var(--header-padding) * 2);
+
+    // Accordion
+    --accordion-toggler-height: 4.375rem;
+    --accordion-toggler-border-radius: #{rem(45px)};
+
+    // Container
+    --container-width:  calc(100% - 2 * var(--grid-margin));
+
+    @media (min-width: $from-sm) {
+        --grid-columns:     #{$base-column-nb};
+        --grid-gutter:      #{rem(22px)};
+        --grid-margin:      #{rem(60px)};
+    }
+
+    @media (min-width: $from-md) {
+        --header-padding: 25px;
+        --grid-margin:      #{rem(120px)};
+    }
+}

@@ -1,0 +1,86 @@
+// ==========================================================================
+// Components / Footer
+// ==========================================================================
+
+.c-footer {
+    padding: size-clamp('xl') 0;
+    border-top-right-radius: var(--border-radius-large);
+    border-top-left-radius: var(--border-radius-large);
+    position: relative;
+    background: colorCode(darkest);
+    color: #fff;
+    z-index: 10;
+    overflow: hidden;
+    text-align: center;
+
+    &_logo {
+        position: relative;
+        text-align: center;
+        margin: spacing('sm') 0;
+
+        .svg-logo-footer {
+            color: colorCode(lightest, 0.2);
+            position: relative;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: colorCode(lightest, 0.2);
+            z-index: -1;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            background: colorCode(darkest);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: calc(var(--icon-width-logo-footer) + var(--grid-gutter)*2);
+            width: calc(var(--icon-width-logo-footer) + var(--grid-gutter)*2);
+            z-index: -1;
+
+        }
+    }
+
+    &_nav {
+        display: flex;
+        justify-content: space-between;
+        //padding-top: spacing('lg');
+        //margin-top: spacing('lg');
+        //border-top: 1px solid colorCode(lightest, 0.2);
+
+        @media (max-width: $to-sm) {
+            flex-direction: column;
+        }
+
+        &_left {
+            @media (max-width: $to-sm) {
+                margin-bottom: spacing('xs');
+            }
+        }
+
+        &_list {
+            li {
+                display: inline-flex;
+                margin-left: spacing('xs');
+            }
+        }
+
+        a {
+            color: colorCode(lightest);
+
+            &:hover {
+                color: colorCode(primary);
+            }
+        }
+    }
+}

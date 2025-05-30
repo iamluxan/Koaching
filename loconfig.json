@@ -59,7 +59,7 @@
         ],
         "purgeCSS": {
             "content": [
-                "./www/**/*.html",
+                "./www/**/*.php",
                 "./assets/scripts/**/*"
             ]
         },

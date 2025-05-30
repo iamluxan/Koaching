@@ -1,0 +1,119 @@
+// ==========================================================================
+// Objects / SVG Icons
+// ==========================================================================
+
+
+// Markup
+//
+// 1. If icon is accessible and has a title
+// 2. If icon is decorative
+//
+// <i class="o-icon ${modifier}">
+//     <svg
+//         class="svg-${icon-name}"
+//         xmlns="http://www.w3.org/2000/svg"
+//         role="img" [1]
+//         aria-hidden="true" [2]
+//         focusable="false" [2]
+//         aria-labelledby="${id}" [1]
+//     >
+//         <title id="${id}"> [1]
+//             Locomotive
+//         </title>
+//         <use xlink:href="assets/images/sprite.svg#${icon-name}" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+//     </svg>
+// </i>
+
+// Global styles for icones
+// ==========================================================================
+
+.o-icon {
+    display: inline-block;
+    vertical-align: middle;
+
+    svg {
+        --icon-height: calc(var(--icon-width) * (1 / (var(--icon-ratio))));
+
+        width: var(--icon-width);
+        height: var(--icon-height);
+        fill: currentColor;
+    }
+}
+
+
+// SVG sizes
+// ==========================================================================
+
+// // Logo
+// .svg-logo {
+//     --icon-width: #{rem(100px)};
+//     --icon-ratio: math.div(20, 30); // width/height based on svg viewBox
+
+//     // Sizes
+//     .o-icon.-big & {
+//         --icon-width: #{rem(200px)};
+//     }
+// }
+
+:root {
+    // Arrow
+    --icon-width-arrow: 1rem;
+    --icon-ratio-arrow: 1 / 1;
+
+    // Logo
+    --icon-width-logo: 33px;
+    --icon-ratio-logo: 1/1;
+
+    --icon-width-logo-footer: 65px;
+
+    --icon-width-logo-contact: #{rem(60px)};
+    --icon-ratio-logo-contact: 1/1;
+
+    // Diploma
+    --icon-width-diploma: 50px;
+    --icon-ratio-diploma: 150/120;
+
+    // Close
+    --icon-width-close: 1.6rem;
+    --icon-ratio-close: 1/1;
+}
+
+.svg-diploma {
+    --icon-width: var(--icon-width-diploma);
+    --icon-ratio: var(--icon-ratio-diploma);
+    fill: colorCode(lightest);
+}
+
+.svg-close {
+    --icon-width: var(--icon-width-close);
+    --icon-ratio: var(--icon-ratio-close);
+    stroke-width: 2px;
+}
+
+.svg-logo,
+.svg-logo-stroke {
+    --icon-width: var(--icon-width-logo);
+    --icon-ratio: var(--icon-ratio-logo);
+}
+
+.svg-logo-footer {
+    --icon-width: var(--icon-width-logo-footer);
+}
+
+
+
+.svg-logo-contact-stroke {
+    --icon-width: var(--icon-width-logo-contact);
+    --icon-ratio: var(--icon-ratio-logo-contact);
+}
+
+.svg-arrow-right,
+.svg-arrow-left {
+    --icon-width: var(--icon-width-arrow);
+    --icon-ratio: var(--icon-ratio-arrow);
+    stroke-width: 2px;
+    stroke: currentColor;
+    stroke-linecap: square;
+    stroke-linejoin: round;
+}
+

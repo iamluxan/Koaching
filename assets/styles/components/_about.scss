@@ -1,0 +1,106 @@
+// ==========================================================================
+// Components / About
+// ==========================================================================
+
+
+// Styles
+// ==========================================================================
+.c-about {
+    padding: spacing('lg') 0;
+    position: relative;
+    z-index: 11;
+
+    &_title {
+        text-align: center;
+        padding-bottom: spacing('lg');
+    }
+
+    &_imgfloat {
+        //margin-top: calc(spacing('2xl') * -1);
+        //position: absolute;
+        //bottom: 0;
+        //left: 0;
+        @media (max-width: $to-sm) {
+            transform: none !important;
+            margin-top: spacing('lg');
+        }
+        @media (min-width: $from-sm) {
+            margin-left: -(rem(200px));
+            margin-top: spacing('xl');
+
+            .c-image {
+                width: rem(600px);
+
+                img {
+                    height: rem(300px);
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+    &_visual {
+        //align-self: flex-end;
+    }
+
+    &_text {
+
+        .c-button {
+            --button-background-hover: #{colorCode(darkest)};
+            --button-color-hover: #{colorCode(lightest)};
+        }
+
+
+        // Diploma icons
+        .c-about_diplomas {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: spacing('lg');
+
+            &_item {
+                display: flex;
+                align-items: center;
+
+                &_label {
+                    @include body-medium();
+                    margin-left: spacing('sm');
+                    font-weight: $font-weight-medium;
+                }
+
+                .o-icon {
+                    position: relative;
+                }
+
+                .o-icon:before {
+                    position: absolute;
+                    padding-bottom: 150%;
+                    border-radius: 50%;
+                    top: 50%;
+                    width: 150%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    content: '';
+                    z-index: -1;
+                    display: block;
+                    background: colorCode(lightgrey);
+                }
+            }
+        }
+    }
+
+    &_inner {
+
+        @media (max-width: $to-sm) {
+            .c-image {
+                transform: none !important;
+            }
+        }
+
+        @media (min-width: $from-sm) {
+            display: grid;
+            gap: spacing('md');
+            grid-template-columns: 4fr 5fr;
+        }
+    }
+}

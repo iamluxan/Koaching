@@ -1,0 +1,125 @@
+// ==========================================================================
+// Components / Main Menu
+// ==========================================================================
+.c-burger {
+  --button-min-width: auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+
+  @media (hover: hover) {
+    &:hover {
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1);
+
+      .c-burger_icon {
+        background: colorCode(primary);
+        color: colorCode(lightest);
+      }
+    }
+  }
+
+  &_icon {
+    cursor: pointer;
+    position: relative;
+    background: colorCode(lightest);
+    color: colorCode(darkest);
+    border-radius: 50%;
+    transition:
+            background speed(normal) ease('power2.inOut'),
+            color speed(normal) ease('power2.inOut'),
+            transform .6s ease('sine.inOut');
+
+    @media (max-width: $to-sm) {
+      width: 40px;
+      height: 40px;
+    }
+
+    @media (min-width: $from-sm) {
+      width: 60px;
+      height: 60px;
+    }
+
+    &:before,
+    &:after {
+      transition:
+              background speed(normal) ease('power2.inOut'),
+              transform speed(normal) ease('power2.inOut'),
+              top .15s ease('power2.inOut') speed(normal),
+              width .15s ease('power2.inOut');
+      content: '';
+      width: 20px;
+      height: 2px;
+      border-radius: 2px;
+      background: currentColor;
+      position: absolute;
+      left: 50%;
+      margin-left: -10px;
+      right: 0;
+
+      @media (max-width: $to-sm) {
+        width: 20px;
+      }
+
+      @media (min-width: $from-sm) {
+        width: 28px;
+        margin-left: -14px;
+      }
+    }
+
+    &:before {
+      @media (max-width: $to-sm) {
+        top: 16px;
+      }
+
+      @media (min-width: $from-sm) {
+        top: 26px;
+      }
+    }
+
+    &:after {
+      @media (max-width: $to-sm) {
+        top: 23px;
+      }
+
+      @media (min-width: $from-sm) {
+        top: 33px;
+      }
+    }
+  }
+}
+
+html.has-menu-open {
+  .c-burger {
+    &_icon {
+      background: colorCode(primary);
+      color: colorCode(lightest);
+
+      &:before,
+      &:after {
+        transition:
+                background speed(normal) ease('power2.inOut'),
+                top .15s ease('power2.inOut'),
+                transform speed(normal) ease speed(normal),
+                width .15s ease('power2.inOut') speed(normal);
+
+        @media (max-width: $to-sm) {
+          top: 19px;
+        }
+
+        @media (min-width: $from-sm) {
+          top: 30px;
+        }
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
