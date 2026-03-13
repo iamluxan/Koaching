@@ -57,10 +57,16 @@
             align-items: center;
             justify-content: center;
             gap: spacing('lg');
+            
+            @media (max-width: $to-xl) {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
 
             &_item {
                 display: flex;
                 align-items: center;
+
 
                 &_label {
                     @include body-medium();
